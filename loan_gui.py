@@ -1,4 +1,5 @@
 from guizero import App, Box, Text, TextBox, PushButton, error  # , Window
+import tkinter as tk
 from loan import Loan
 
 ln = Loan()
@@ -6,6 +7,12 @@ header = "%s" % ln.print_header()
 
 gui = App("Loan Calculator", width=1000, height=600, bg="#CCFFFF")
 
+# Load the icon image
+try:
+    icon_img = tk.PhotoImage(file="~/PycharmProjects/loan_gui/loan.png")
+    gui.tk.iconphoto(False, icon_img)
+except tk.TclError:
+    print("icon.png not found. Using default icon.")
 
 def calculate_payment():
     """Validate input, calculate payment, and return formatted results."""
